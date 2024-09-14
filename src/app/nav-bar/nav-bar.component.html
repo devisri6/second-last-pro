@@ -1,0 +1,29 @@
+
+<nav class="block w-full px-4 py-2 mx-auto bg-white bg-opacity-90 sticky top-3 shadow-lg lg:px-8 lg:py-3 backdrop-blur-lg backdrop-saturate-150 z-[9999] mt-10 relative">
+    <div class="container flex flex-wrap items-center justify-between text-slate-800 relative">
+        <h2 class="font-semibold text-lg">Project</h2>
+        <div class="relative">
+            <i class="far fa-bell text-xl cursor-pointer" (click)="onClick()"></i>
+            <span *ngIf="unreadNotifications.length > 0" class="absolute -top-2 -right-2 rounded-full bg-red-600 text-white text-xs w-5 h-5 flex items-center justify-center">
+                {{ unreadNotifications.length }}
+            </span>
+        </div>
+        <div *ngIf="show_pop_up" class="absolute top-full right-0 w-80 bg-gray-100 rounded-lg shadow-lg p-4 mt-2">
+            <h2 class="font-semibold text-lg">Notifications</h2>
+            <div *ngFor="let notification of unreadNotifications">
+                <p class="mt-3 mb-3">{{ notification.msg }}</p>
+                <hr class="text-gray-600 mb-3 mt-3">
+            </div>
+            <div class="flex justify-center mt-10">
+                <button class="cursor-pointer text-lg text-purple-600 hover:text-purple-700" (click)="showPage()">All Notifications</button>
+            </div>
+        </div>
+    </div>
+</nav>
+<div *ngIf="!show_page">
+    <div class="flex flex-col items-center justify-center mt-10">
+        <div *ngFor="let notification of unreadNotifications" class="w-full max-w-lg mt-5">
+            <app-message-card [notification]="notification"></app-message-card>
+        </div>
+    </div>
+</div>

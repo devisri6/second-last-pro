@@ -1,0 +1,18 @@
+
+<app-nav-bar></app-nav-bar>
+<div class="flex flex-col items-center mt-10">
+    <h2 class="font-semibold text-3xl text-slate-800">Notifications</h2>
+    <!-- search bar -->
+    <div class="mt-8 w-full max-w-md mb-10">
+        <input type="search" placeholder="Search" class="block w-full rounded border border-solid border-neutral-200 bg-transparent px-3 py-2 text-base font-normal leading-[1.6] text-surface outline-none transition duration-200 ease-in-out placeholder:text-neutral-500 focus:z-[3] focus:border-primary focus:shadow-inset focus:outline-none dark:border-white/10 dark:text-white dark:placeholder:text-neutral-200 dark:focus:border-primary" (input)="filterNotification()" [(ngModel)]="searchTerm">
+    </div>
+    <div *ngIf="!filteredNotifications.length" class="mt-20">
+        <h1 class="text-gray-300 font-semibold text-4xl">No Notifications</h1>
+    </div>
+    <div *ngIf="filteredNotifications.length" style="overflow-y: auto;">
+        
+        <div *ngFor="let notification of filteredNotifications" >
+            <app-message-card [notification]="notification"></app-message-card>
+        </div>
+    </div>
+</div>

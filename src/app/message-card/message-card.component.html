@@ -1,0 +1,16 @@
+<div class="rounded p-4 relative border bg-white mb-2  w-full  " style="max-height: 65vh; width: 35vw; padding-right: 15px; height:7vw">
+    <p class="text-gray-500 text-sm">{{ notification.datetime | date:'MMM dd, yyyy hh:mm a' }}</p>
+
+    {{notification.msg}}
+    <button (click)="deleteData()"><i class="fa-solid fa-trash-can absolute right-3 text-lg cursor-pointer top-3"  ></i></button>
+    
+    <button 
+(click)="markAsRead()"
+[disabled]="notification.isread"
+class="px-4 py-2 text-purple-500 hover:text-purple-600 font-semibold disabled:text-gray-300 absolute bottom-0 right-0 "
+>
+Mark as read
+</button>
+</div>
+
+
